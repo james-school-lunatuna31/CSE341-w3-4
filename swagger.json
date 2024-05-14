@@ -8,7 +8,7 @@
   "host": "cse341-project1-g6sv.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/users/": {
