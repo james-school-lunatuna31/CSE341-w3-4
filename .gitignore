@@ -104,6 +104,9 @@ dist
 .temp
 .cache
 
+#eslint
+   .eslintcache
+
 # Docusaurus cache and generated files
 .docusaurus
 

@@ -1,0 +1,348 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Users API",
+    "description": "users API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users/": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint to get all users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved all users"
+          },
+          "500": {
+            "description": "Failed to retrieve users"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint to create a new user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          },
+          "400": {
+            "description": "Name, email, and password are required"
+          },
+          "500": {
+            "description": "Failed to create user"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint to get a single user by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved user"
+          },
+          "500": {
+            "description": "Failed to retrieve user"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint to update an existing user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated user data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated successfully"
+          },
+          "400": {
+            "description": "Invalid user ID format or no updates provided"
+          },
+          "404": {
+            "description": "User not found or no changes made"
+          },
+          "500": {
+            "description": "Failed to update user"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint to delete a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted successfully"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Failed to delete user"
+          }
+        }
+      }
+    },
+    "/catalogue/": {
+      "get": {
+        "tags": [
+          "Catalogue"
+        ],
+        "description": "Endpoint to get all books",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved all books"
+          },
+          "500": {
+            "description": "Failed to retrieve books"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Catalogue"
+        ],
+        "description": "Endpoint to create a new book",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Book data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ISBN": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "releaseYear": {
+                  "type": "string",
+                  "example": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Book added successfully"
+          },
+          "400": {
+            "description": "ISBN, title, and release year are required"
+          },
+          "500": {
+            "description": "Failed to add book"
+          }
+        }
+      }
+    },
+    "/catalogue/{id}": {
+      "get": {
+        "tags": [
+          "Catalogue"
+        ],
+        "description": "Endpoint to get a single book by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved book"
+          },
+          "500": {
+            "description": "Failed to retrieve book"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Catalogue"
+        ],
+        "description": "Endpoint to update an existing book",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Book ID"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated book data",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ISBN": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "releaseYear": {
+                  "type": "string",
+                  "example": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book updated successfully"
+          },
+          "400": {
+            "description": "Invalid book ID format or no updates provided"
+          },
+          "404": {
+            "description": "Book not found or no changes made"
+          },
+          "500": {
+            "description": "Failed to update book"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Catalogue"
+        ],
+        "description": "Endpoint to delete a book by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Book ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book deleted successfully"
+          },
+          "404": {
+            "description": "Book not found"
+          },
+          "500": {
+            "description": "Failed to delete book"
+          }
+        }
+      }
+    }
+  },
+  "schema": [
+    "https"
+  ]
+}
