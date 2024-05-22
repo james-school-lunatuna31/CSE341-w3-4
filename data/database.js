@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 require('dotenv').config();
 
 const uri = process.env.MONGO_URL;
@@ -12,9 +12,11 @@ const initDb = (callback) => {
   MongoClient.connect(uri)
     .then((client) => {
       _db = client.db();
+      console.log('Database connected successfully');
       callback(null, _db);
     })
     .catch((err) => {
+      console.error('Database connection error:', err);
       callback(err);
     });
 };
@@ -26,7 +28,26 @@ const getDb = () => {
   return _db;
 };
 
+const getUserById = async (id, done) => {
+  console.log(`Attempting to fetch user with ID: ${id}`);
+  try {
+    const db = getDb();
+    const collection = db.collection('users');
+    const user = await collection.findOne({ _id: new ObjectId(id) });
+    if (!user) {
+      console.log('No user found with the given ID.');
+    } else {
+      console.log('User fetched successfully:', user);
+    }
+    done(null, user);
+  } catch (err) {
+    console.error('Error fetching user:', err);
+    done(err);
+  }
+};
+
 module.exports = {
   initDb,
   getDb,
+  getUserById,
 };
